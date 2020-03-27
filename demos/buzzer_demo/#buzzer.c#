@@ -51,14 +51,12 @@ void switchStatement(){
     switch(i)
       {
       case 0:
-	for(int j=0; j<2 ; j++){
-	  song();
-	}
-	break;
+	for int j = 0; i<2; i++){
+           song();
+
+	   break;
       case 1:
-	for(int k=0; k<2 ; k++){
-	  bolero();
-	}
+	bolero();
 	break;
       }
     i++;
