@@ -32,7 +32,7 @@ void song()
   int i=0;
   for(i; i < 20; i ++){
     buzzer_set_period(keys[i]);
-    __delay_cycles(1); // this is a method from msp430 which creates a dalay in the sound making it easier to sound.
+    __delay_cycles(4000000); // this is a method from msp430 which creates a dalay in the sound making it easier to sound.
   }
   buzzer_set_period(0);
 }

@@ -28,6 +28,3 @@ buzzer.o: buzzer.c buzzer.h
 
 led.o: led.c led.h
 
-wdInterruptHandler.o: stateMachines.h wdInterruptHandler.c
-
-stateMachines.o: led.h stateMachines.h
