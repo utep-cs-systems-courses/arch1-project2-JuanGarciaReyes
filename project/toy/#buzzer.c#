@@ -32,19 +32,19 @@ void song()
   int i=0;
   for(i; i < 20; i ++){
     buzzer_set_period(keys[i]);
-    __delay_cycles(1); // this is a method from msp430 which creates a dalay in the sound making it easier to sound.
+    __delay_cycles(4000000); // this is a method from msp430 which creates a dalay in the sound making it easier to sound.
   }
   buzzer_set_period(0);
 }
 
 
-3
+
 void bolero(){
   int keys[19] = {1400, 1702, 1400, 1702, 1136, 1400, 1136, 1136, 1400, 0, 0, 0, 1400, 1702, 1136, 1400, 1136, 1400}; //frequencies for the song of zelda bolero of fire
   int i = 0;
   while(i < 20){
     buzzer_set_period(keys[i]);
-    __delay_cycles(1);
+    __delay_cycles(4000000);
     i++;
   }
   buzzer_set_period(0);
@@ -70,4 +70,8 @@ void switchStatement(){
       }
    i++;
   }
+}
+
+void buzzeroff(){
+  buzzer_set_period(1500);
 }

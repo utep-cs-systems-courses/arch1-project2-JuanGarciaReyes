@@ -2,6 +2,7 @@
 #include "switches.h"
 #include "buzzer.h"
 #include "led.h"
+#include "stateMachines.h"
 
 char switch_state_down, switch_state_changed; /* effectively boolean */
 
@@ -24,7 +25,7 @@ switch_init()/* setup switch */
   P2DIR &= ~SWITCHES;/* set switches' bits for input */
   switch_update_interrupt_sense();
   switch_interrupt_handler();
-  led_update();
+  // led_update();
 }
 
 void switch_interrupt_handler(){
@@ -38,6 +39,10 @@ void switch_interrupt_handler(){
     switchStatement();
   }
   if(button2){
-    led_update();
+    //bolero();
+    leds_off();
+  }
+  if(button3){
+    buzzeroff();
   }
 }

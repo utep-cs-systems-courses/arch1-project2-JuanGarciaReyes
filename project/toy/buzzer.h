@@ -6,4 +6,5 @@ void buzzer_set_period(short cycles);
 void song();
 void bolero();
 void switchStatement();
+void buzzeroff();
 #endif // included

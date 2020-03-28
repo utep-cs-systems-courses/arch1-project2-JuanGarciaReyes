@@ -71,3 +71,7 @@ void switchStatement(){
    i++;
   }
 }
+
+void buzzeroff(){
+  buzzer_set_period(1500);
+}

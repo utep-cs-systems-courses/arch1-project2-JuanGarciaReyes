@@ -16,7 +16,7 @@ char toggle_red()/* always toggle! */
     state = 0;
     break;
   }
-  return 1;/* always changes an led */
+  return 1;/* always changes a led */
 }
 
 char toggle_green()/* only toggle green if red is on!  */
@@ -41,5 +41,9 @@ void state_advance()/* alternate between toggling red & green */
   }
 
   led_changed = changed;
+  led_update();
+}
+void leds_off(){
+  static enum{R=0,G=0} color = G;
   led_update();
 }
