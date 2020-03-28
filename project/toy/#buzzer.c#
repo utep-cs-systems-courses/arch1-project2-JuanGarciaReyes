@@ -38,13 +38,13 @@ void song()
 }
 
 
-
+3
 void bolero(){
   int keys[19] = {1400, 1702, 1400, 1702, 1136, 1400, 1136, 1136, 1400, 0, 0, 0, 1400, 1702, 1136, 1400, 1136, 1400}; //frequencies for the song of zelda bolero of fire
   int i = 0;
   while(i < 20){
     buzzer_set_period(keys[i]);
-    __delay_cycles(4000000);
+    __delay_cycles(1);
     i++;
   }
   buzzer_set_period(0);
