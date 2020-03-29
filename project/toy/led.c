@@ -1,7 +1,14 @@
+/*
+Juan Angel Garcia Reyes.
+80591934.
+M-W 1:30- 3:00.
+Professor- Dr. Eric Freudenthal.
+*/
+
 #include <msp430.h>
 #include "led.h"
 
-unsigned char red_on = 0, green_on = 0;
+unsigned char red_on = 0, green_on = 0, led_state = 0;
 unsigned char led_changed = 0;
 
 static char redVal[] = {0, LED_RED}, greenVal[] = {0, LED_GREEN};
@@ -17,8 +24,7 @@ void led_init()
 void led_update()
 {
   if (led_changed) {
-    char ledFlags = redVal[red_on] | greenVal[green_on];
-
+    char ledFlags = greenVal[red_on] | redVal[green_on]; //changed the red_on into greenVal because it was not working as I wanted to
     P1OUT &= (0xff^LEDS) | ledFlags; // clear bit for off leds
     P1OUT |= ledFlags;     // set bit for on leds
     led_changed = 0;

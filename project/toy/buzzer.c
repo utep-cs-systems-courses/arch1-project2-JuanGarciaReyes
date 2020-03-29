@@ -1,3 +1,10 @@
+/*
+Juan Angel Garcia Reyes.
+80591934.
+M-W 1:30- 3:00.
+Professor- Dr. Eric Freudenthal.
+*/
+
 #include <msp430.h>
 #include "libTimer.h"
 #include "buzzer.h"
@@ -26,15 +33,14 @@ void buzzer_set_period(short cycles) /* buzzer clock = 2MHz.  (period of 1k resu
   CCR1 = cycles >> 1;/* one half cycle */
 }
 
-void song()
-{
+void lostWoods(){
   int keys[20] = {1400, 1136, 1012, 0, 1400, 1136, 1012, 0, 1400, 1136, 1012, 758, 851, 0, 1012, 956, 1012, 1276, 1517, 0}; //these are the frequencies for each tone on lost woods from Zelda videogame
   int i=0;
-  for(i; i < 20; i ++){
+  for(i; i < 20; i ++){ //for loop that buzz each frequencies as the necesaries 
     buzzer_set_period(keys[i]);
     __delay_cycles(4000000); // this is a method from msp430 which creates a dalay in the sound making it easier to sound.
   }
-  buzzer_set_period(0);
+  buzzer_set_period(0); //stops the sound
 }
 
 
@@ -43,8 +49,8 @@ void bolero(){
   int keys[19] = {1400, 1702, 1400, 1702, 1136, 1400, 1136, 1136, 1400, 0, 0, 0, 1400, 1702, 1136, 1400, 1136, 1400}; //frequencies for the song of zelda bolero of fire
   int i = 0;
   while(i < 20){
-    buzzer_set_period(keys[i]);
-    __delay_cycles(4000000);
+    buzzer_set_period(keys[i]);//plays each frequencies
+    __delay_cycles(4000000); 
     i++;
   }
   buzzer_set_period(0);
@@ -52,19 +58,19 @@ void bolero(){
 
 
 
-void switchStatement(){
+void switchStatement(){ //it plays both of the songs, with an each statement
   int i = 0;
   while( i < 2){
     switch(i)
       {
       case 0:
-	for(int j=0; j<2 ; j++){
-	  song();
+	for(int j=0; j<2 ; j++){ //it plays lostWoods two times
+	  lostWoods();
 	}
 	break;
       case 1:
 	for(int k=0; k<2 ; k++){
-	  bolero();
+	  bolero(); //it plays bolero two times.
 	}
 	break;
       }
@@ -72,6 +78,6 @@ void switchStatement(){
   }
 }
 
-void buzzeroff(){
-  buzzer_set_period(1500);
+void buzzeroff(){ //it stops the sound
+  buzzer_set_period(0);
 }

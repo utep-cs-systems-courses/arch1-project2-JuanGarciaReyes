@@ -2,48 +2,42 @@
 #include "stateMachines.h"
 #include "led.h"
 
-char toggle_red()/* always toggle! */
-{
-  static char state = 0;
+static enum {off=0, on=1, dim=2} cases; //creates a dictionary of cases off on and the dim which lows the led light
+static char counter =0;
 
-  switch (state) {
-  case 0:
-    red_on = 1;
-    state = 1;
+void switcher(){
+  cases = (cases + 1) % 3; //switches from 0 to 1
+}
+
+void count(){ //altenate the counter in the state of the leds
+  counter = (counter + 1) % 3;
+}
+
+void state_of_leds(){ //change the states of the light from off to on and finally to dim
+  char temp;
+  switch (cases){
+  case off: //off turn.
+    temp = 0;
     break;
-  case 1:
-    red_on = 0;
-    state = 0;
+  case on: // it turns the light on.
+    temp = 1;
+    break;
+  case dim: //it lows the frequency of the light.
+    temp = (counter < 1);
     break;
   }
-  return 1;/* always changes a led */
-}
-
-char toggle_green()/* only toggle green if red is on!  */
-{
-  char changed = 0;
-  if (red_on) {
-    green_on ^= 1;
-    changed = 1;
+  if(red_on != temp){ // finally uses the red light.
+    red_on = temp;
+    led_changed = 1;
   }
-  return changed;
+}
+
+void greenon(){
+  green_on = 1; //turns on the green light
+}
+
+void greenoff(){
+  green_on = 0; //turns off the green light
 }
 
 
-void state_advance()/* alternate between toggling red & green */
-{
-  char changed = 0;
-
-  static enum {R=0, G=1} color = G;
-  switch (color) {
-  case R: changed = toggle_red(); color = G; break;
-  case G: changed = toggle_green(); color = R; break;
-  }
-
-  led_changed = changed;
-  led_update();
-}
-void leds_off(){
-  static enum{R=0,G=0} color = G;
-  led_update();
-}

@@ -1,7 +1,11 @@
 #ifndef stateMachine_included
 #define stateMachine_included
 
-void state_advance();
-void leds_off();
+void switcher();
+void count();
+void state_ofleds();
+void greenon();
+void greenoff();
+
 
 #endif // included
