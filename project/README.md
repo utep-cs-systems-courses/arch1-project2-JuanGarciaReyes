@@ -1,7 +1,8 @@
 # Project 2
 ## Juan Garcia Reyes
+- **button 1:**
 it plays music with a method in the buzzer which is switchstatement
-- **button two:**
+- **button 2:**
 it plays the dim with uses the stateMachine.c and the led.c
 - **button 3:**
 it turns on th green button with an annoying sound
